@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Clipper — Application Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="board-body">
+  <header class="board-header">
+    <div class="board-header-inner">
+      <div class="board-brand">
+        <img src="icons/icon32.png" alt="" class="brand-icon" width="28" height="28">
+        <div>
+          <h1 class="board-title">Job Clipper</h1>
+          <p id="board-summary" class="board-summary">0 jobs tracked</p>
+        </div>
+      </div>
+
+      <div class="board-controls">
+        <label for="search-input" class="sr-only">Search by role or company</label>
+        <input
+          id="search-input"
+          type="search"
+          class="search-input"
+          placeholder="Search role or company..."
+          autocomplete="off"
+        >
+        <button type="button" id="add-job-btn" class="btn btn-secondary">Add job</button>
+        <button type="button" id="export-csv-btn" class="btn btn-primary">Export CSV</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="board-main">
+    <section class="board-grid" aria-label="Job application columns">
+      <div class="board-column" data-status="Saved">
+        <div class="column-header">
+          <h2 class="column-title">Saved</h2>
+          <span class="column-count" data-count-for="Saved">0</span>
+        </div>
+        <div class="column-list" data-list-for="Saved"></div>
+      </div>
+
+      <div class="board-column" data-status="Applied">
+        <div class="column-header">
+          <h2 class="column-title">Applied</h2>
+          <span class="column-count" data-count-for="Applied">0</span>
+        </div>
+        <div class="column-list" data-list-for="Applied"></div>
+      </div>
+
+      <div class="board-column" data-status="Interview">
+        <div class="column-header">
+          <h2 class="column-title">Interview</h2>
+          <span class="column-count" data-count-for="Interview">0</span>
+        </div>
+        <div class="column-list" data-list-for="Interview"></div>
+      </div>
+
+      <div class="board-column" data-status="Result">
+        <div class="column-header">
+          <h2 class="column-title">Result</h2>
+          <span class="column-count" data-count-for="Result">0</span>
+        </div>
+        <div class="column-list" data-list-for="Result"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="job-modal" class="job-modal" aria-labelledby="modal-title">
+    <form id="job-modal-form" class="modal-form" novalidate>
+      <div class="modal-header">
+        <h2 id="modal-title" class="modal-title">Edit Job</h2>
+        <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-fields">
+        <div class="field-group">
+          <label for="modal-role" class="field-label">Role</label>
+          <input id="modal-role" type="text" class="field-input" required autocomplete="off">
+        </div>
+
+        <div class="field-group">
+          <label for="modal-company" class="field-label">Company</label>
+          <input id="modal-company" type="text" class="field-input" autocomplete="off">
+        </div>
+
+        <div class="field-group">
+          <label for="modal-link" class="field-label">Link</label>
+          <input id="modal-link" type="text" class="field-input" placeholder="https://example.com/job" autocomplete="off">
+        </div>
+
+        <div class="modal-row">
+          <div class="field-group">
+            <label for="modal-deadline" class="field-label">Deadline</label>
+            <input id="modal-deadline" type="date" class="field-input">
+          </div>
+
+          <div class="field-group">
+            <label for="modal-status" class="field-label">Status</label>
+            <select id="modal-status" class="field-input">
+              <option value="Saved">Saved</option>
+              <option value="Applied">Applied</option>
+              <option value="Interview">Interview</option>
+              <option value="Result">Result</option>
+            </select>
+          </div>
+        </div>
+
+        <p id="modal-error" class="form-feedback is-error" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
+        <button type="submit" id="modal-save-btn" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="common.js"></script>
+  <script src="board.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Clipper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="popup-body">
+  <main class="popup-container">
+    <header class="popup-header">
+      <div class="brand">
+        <img src="icons/icon32.png" alt="" class="brand-icon" width="22" height="22">
+        <h1 class="popup-title">Job Clipper</h1>
+      </div>
+      <p id="detect-status" class="detect-status" role="status" aria-live="polite"></p>
+    </header>
+
+    <form id="clip-form" class="clip-form" novalidate>
+      <div class="field-group">
+        <label for="role" class="field-label">Role</label>
+        <input
+          id="role"
+          name="role"
+          type="text"
+          class="field-input"
+          placeholder="e.g. Software Engineer"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="company" class="field-label">Company</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          class="field-input"
+          placeholder="e.g. Acme Corp"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="link" class="field-label">Link</label>
+        <input
+          id="link"
+          name="link"
+          type="text"
+          class="field-input"
+          placeholder="https://example.com/jobs/123"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="deadline" class="field-label">Deadline</label>
+        <input
+          id="deadline"
+          name="deadline"
+          type="date"
+          class="field-input"
+        >
+      </div>
+
+      <p id="form-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+
+      <div class="popup-actions">
+        <button type="submit" id="add-btn" class="btn btn-primary">Add to board</button>
+        <button type="button" id="open-board-btn" class="btn btn-secondary">Open board</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
